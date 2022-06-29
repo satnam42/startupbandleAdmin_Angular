@@ -1,0 +1,55 @@
+<mat-card class="p-0">
+    <mat-card-title class="title">
+        <!-- <div class="card-title-text" *ngIf="!user.firstName">Add User</div> -->
+        <div class="card-title-text">{{formName}}</div>
+        <mat-divider></mat-divider>
+    </mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="roleForm" (ngSubmit)="onSubmit()">
+            <div fxLayout="row wrap">
+                <div fxFlex="100" fxFlex.gt-xs="75" class="pr-1">
+                   
+                    <div class="pb-1">
+                        <mat-form-field class="full-width">
+                            <input matInput name="type" placeholder="Role type" formControlName="type"
+                                [(ngModel)]="role.type">
+                        </mat-form-field>
+                    </div></div>
+                   
+
+                   <div fxFlex="100" fxFlex.gt-xs="75" class="pr-1">
+                  
+                    <div class="pb-1">
+                        <mat-form-field class="full-width">
+                            <mat-select name="permissions" placeholder="Permissions" formControlName="permissions" (ngModelChange)="onChange($event)" 
+                            >
+                                <!-- <mat-option *ngFor="let list of rolesList" >
+                                    {{list.edit}}
+                                </mat-option> -->
+                                <mat-option  value='view'>view</mat-option>
+                                <mat-option  value='add'>add</mat-option>
+                                <mat-option  value='edit'>edit</mat-option>
+                                <mat-option  value='all'>all</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    </div>
+                    <!-- <div class="pb-1" *ngIf="!user._id">
+                        <mat-form-field class="full-width">
+                            <mat-select name="roleId" placeholder="User Role" formControlName="roleId"
+                                [(ngModel)]="user.roleId">
+                                <mat-option *ngFor="let role of rolesList" [value]="role._id">
+                                    {{role.type}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div> -->
+
+                </div>
+            
+            <button mat-raised-button color="warn" (click)="back()">Back</button>
+            <button class="submitBtn" mat-raised-button color="primary" >Submit</button>
+        </form>
+    </mat-card-content>
+</mat-card>

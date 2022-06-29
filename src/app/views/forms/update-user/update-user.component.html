@@ -1,0 +1,110 @@
+<mat-card class="p-0">
+    <mat-card-title class="title">
+        <!-- <div class="card-title-text" *ngIf="!user.firstName">Add User</div> -->
+        <div class="card-title-text">{{formName}}</div>
+        <mat-divider></mat-divider>
+    </mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+            <div fxLayout="row wrap">
+                <div fxFlex="100" fxFlex.gt-xs="50" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width">
+                            <input matInput name="firstName" placeholder="Name" formControlName="firstName"
+                                [(ngModel)]="user.firstName">
+                        </mat-form-field>
+                    </div>
+                    <div class="pb-1">
+                        <mat-form-field class="full-width">
+                            <input matInput type="email" name="email" placeholder="Email" formControlName="email"
+                                [(ngModel)]="user.email">
+                        </mat-form-field>
+                    </div>
+                    <div class="pb-1">
+                        <mat-form-field class="full-width">
+                            <mat-select name="sex" placeholder="Gender" formControlName="sex" [(ngModel)]="user.sex">
+                                <mat-option *ngFor="let gender of genders" [value]="gender.value">
+                                    {{gender.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="pb-1">
+                        <mat-form-field class="full-width">
+                            <input matInput name="address_line1" placeholder="Address Line1"
+                                [formControl]="userForm.controls['addressLine1']" [(ngModel)]="user.addressLine1">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="pb-1">
+                        <mat-form-field class="full-width">
+                            <input matInput name="country" placeholder="Country"
+                                [formControl]="userForm.controls['country']" [(ngModel)]="user.country">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="pb-1">
+                        <mat-form-field class="full-width">
+                            <input matInput name="zip_code" placeholder="Zip Code" maxlength="6"
+                                [formControl]="userForm.controls['zipCode']" [(ngModel)]="user.zipCode">
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-xs="50" class="pr-1">
+
+                    <div class="pb-1">
+                        <mat-form-field class="full-width">
+                            <input matInput name="lastName" placeholder="Last name"
+                                [formControl]="userForm.controls['lastName']" [(ngModel)]="user.lastName">
+                        </mat-form-field>
+                    </div>
+                    <div class="pb-1" *ngIf="!user._id">
+                        <mat-form-field class="full-width">
+                            <input matInput [type]="show ? 'password' : 'text'" name="password" placeholder="Password"
+                                [formControl]="userForm.controls['password']" [(ngModel)]="user.password">
+                            <mat-icon class="cursor-pointer" matSuffix (click)="show = !show">{{show ? 'visibility_off'
+                                : 'visibility'}}</mat-icon>
+                        </mat-form-field>
+                    </div>
+                    <div class="pb-1">
+                        <mat-form-field class="full-width">
+                            <input matInput name="phone" placeholder="Phone number" maxlength="10"
+                                [formControl]="userForm.controls['phoneNumber']" [(ngModel)]="user.phoneNumber">
+                        </mat-form-field>
+                    </div>
+
+
+                    <div class="pb-1">
+                        <mat-form-field class="full-width">
+                            <input matInput name="address_line2" placeholder="Address Line2"
+                                [formControl]="userForm.controls['addressLine2']" [(ngModel)]="user.addressLine2">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="pb-1">
+                        <mat-form-field class="full-width">
+                            <input matInput name="city" placeholder="City" [formControl]="userForm.controls['city']"
+                                [(ngModel)]="user.city">
+                        </mat-form-field>
+                    </div>
+
+                    <!-- <div class="pb-1" *ngIf="!user._id">
+                        <mat-form-field class="full-width">
+                            <mat-select name="roleId" placeholder="User Role" formControlName="roleId"
+                                [(ngModel)]="user.roleId">
+                                <mat-option *ngFor="let role of rolesList" [value]="role._id">
+                                    {{role.type}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div> -->
+
+                </div>
+            </div>
+            <button mat-raised-button color="warn" (click)="back()">Back</button>
+            <button class="submitBtn" mat-raised-button color="primary" [disabled]="userForm.invalid">Submit</button>
+        </form>
+    </mat-card-content>
+</mat-card>

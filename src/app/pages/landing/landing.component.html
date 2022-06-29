@@ -1,0 +1,148 @@
+<body>
+    <app-header2 *ngIf="!isLogin"></app-header2>
+    <app-header *ngIf="isLogin"></app-header>
+    <!-- <app-alert *ngIf="isLogin"></app-alert> -->
+    <section class="landing_banner">
+        <h1 class="text">Welcome To StartUp Bundle...</h1>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="best_activities">
+
+                        <!-- <form class="banner_form">
+                            <div class="form-group">
+                                <input type="text" placeholder="Activity: e.g. Summer Camp"
+                                    class="form-control camp_input">
+                            </div>
+                            <div class="form-group">
+                                <input [owlDateTimeTrigger]="date1" placeholder="Pick a Date" class="date_input"
+                                    [ngModelOptions]="{standalone: true}" [owlDateTime]="date1" [(ngModel)]="pickDate">
+                                <owl-date-time [pickerType]="'calendar'" #date1></owl-date-time>
+                            </div>
+                            <div class="form-group">
+                                <button (click)="search()" class="banner_button" type="submit">
+                                    <img src="assets/search_icon.svg" alt="Search image">
+                                </button>
+                            </div>
+                        </form> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="banner_overlay"></div> -->
+    </section>
+
+    <!-- <section class="activity_category">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="title">Activity Categories</h2>
+                </div>
+            </div>
+
+            <div class="activity_category_list">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="category_list_box cursor" [routerLink]="['/search']">
+                            <a href="javascritpt:;">
+                                <div class="category_image">
+                                    <img src="assets/category1.jpg" alt="Category image">
+                                </div>
+
+                                <div class="category_title">
+                                    <p><span class="title_arrow">
+                                            <img src="assets/category_arrow.svg" alt="Category_arrow">
+                                        </span></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </section> -->
+
+
+
+    <!-- <section class="upto_date">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="upto_inner">
+                        <h2 class="title">Stay upto date</h2>
+                        <p>Stay upto date and receive best promotions directly in your inbox. We promise not to spam
+                            you.</p>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="example@domain.com">
+                            <div class="input-group-append">
+                                <button class="Submit_btn" type="button">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+
+
+    <!-- <footer>
+        <div class="container">
+            <div class="footer_inner">
+                <div class="row align-items-center">
+                    <div class="col-12">
+                        <div class="footer_left">
+                            <div class="footer_logo">
+                                <a href="landing">
+                                    <img *ngIf="isLogin" src="assets/newlogowhite.png" alt="Logo">
+                                </a>
+                            </div>
+                            <div class="footer_menu">
+                                <ul>
+                                    <li>
+                                        <a [routerLink]="['/term-condition']">About Us</a>
+                                    </li>
+                                    <li>
+                                        <a [routerLink]="['/term-condition']">Terms & Conditions</a>
+                                    </li>
+                                    <li>
+                                        <a [routerLink]="['/term-condition']">Privacy Policy</a>
+                                    </li>
+                                    <li>
+                                        <a [routerLink]="['/ambassador-policy']">Ambassador Policy</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="copyright_text">
+                                <p>© 2019 Letsplay Holdings Inc. All Rights Reserved.</p>
+                            </div>
+                        </div>
+                        <div class="social_icon_footer">
+                            <ul>
+                                <li>
+                                    <a href="javascript:;">
+                                        <span class="icon icon-facebook"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;">
+                                        <span class="icon icon-instagram"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;">
+                                        <span class="icon icon-pinterest"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer> -->
+</body>

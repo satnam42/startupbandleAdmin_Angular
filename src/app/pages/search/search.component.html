@@ -1,0 +1,251 @@
+<app-header2 *ngIf="!isLogin"></app-header2>
+<app-header *ngIf="isLogin"></app-header>
+
+<div class="container ">
+    <!-- <div class="text-center heading-margin">
+        <h1>
+            Welcome To StartUp
+            <br>Bundle
+        </h1>
+
+        <h3 class="heading-text">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi repellat expedita totam voluptatum eius
+            debitis
+        </h3>
+    </div> -->
+
+    <div class="row">
+        <div class="col-md-8 text-center">
+            <h1 class="heading-margin">
+                Welcome To StartUp <br>Bundle
+            </h1>
+
+            <h3 class="heading-text">
+                Lorem ipsum dolor sit, amet consectetur adipisicing
+                <br>elit. Eligendi repellat expedita totam voluptatum
+                <br> eius debitis
+            </h3>
+            <img src="assets/program_img2.jpg" class="img-cls" alt="image here ">
+
+        </div>
+
+
+        <div class="col-md-4 text-center">
+            <h3 class="heading-txt">
+                Lorem ipsum dolor sit, amet consectetur adipisicing
+                elit. Eligendi repellat expedita totam voluptatum
+                eius debitis Lorem ipsum dolor sit, amet consectetur adipisicing
+                elit. Eligendi repellat expedita totam voluptatum
+                eius debitis
+            </h3>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- <h1 class="text">Welcome To Homepage........!</h1> -->
+<!-- <section class="main_outer">
+
+    <div class="search_activity">
+        <div class="row row-0">
+            <div class="col-md-7 list_left">
+                <div class="left_search">
+                    <div>
+                        <form class="banner_form">
+                            <div class="form-group">
+                                <input type="text" placeholder="Activity: e.g. Summer Camp"
+                                    class="form-control camp_input">
+                            </div>
+                            <div class="form-group">
+                                <input [owlDateTimeTrigger]="date1" placeholder="Pick a Date"
+                                    class="form-control date_input" [owlDateTime]="date1"
+                                    [ngModelOptions]="{standalone: true}" [(ngModel)]="pickDate" readonly>
+                                <owl-date-time [pickerType]="'calendar'" #date1></owl-date-time>
+                            </div>
+                            <div class="form-group">
+                                <button class="banner_button" type="submit">
+                                    <img src="assets/search_icon.svg" alt="Search image">
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div> -->
+<!-- 
+                <div class="category_list" id="accordionExample">
+                    <ul>
+   
+                        <li class="cursor">
+                            <a>Child</a>
+                        </li>
+
+                    <li class="cursor">
+                            <a>Price</a>
+                        </li>
+
+                    
+                        <li class="cursor">
+                            <a >Date</a>
+                        </li>
+                       
+                        <li class="cursor">
+                            <a >Age</a>
+                        </li>
+
+                        <li class="cursor">
+                            <a>Time</a>
+                        </li>
+
+                      
+                    
+                        <li class="cursor">
+                            <a>Category</a>
+                        </li>
+                        
+                        <li >
+                         <a >Saved</a>
+                        </li>
+
+                        <li class="cursor">
+                            <a >Covid Cleared</a>
+                        </li>
+
+                        <li class="cursor">
+                            <a >Open</a>
+                        </li>
+
+                        <li *ngIf="showReset" class="cursor">
+                            <a (click)="resetFilter()" scrollToTop.scrollTop=0>Reset</a>
+                        </li>
+
+                    </ul>
+
+                </div> -->
+
+<!-- <div class="search-results" #scrollToTop infiniteScroll [infiniteScrollDistance]="2"
+                    [infiniteScrollThrottle]="500"  [scrollWindow]="false" 
+                    *ngIf="programs">
+                    <div class="list-group ">
+                    <div *ngFor="let program of programs; let i=index " class="media activity align-items-center ">
+                        <div class="media-left ">
+                                <img  src="assets/code.png " alt="Activity">
+                         
+
+                        </div>
+                        <div class="media-body ">
+                            <div *ngIf="isLogin " class="share_icon ">
+                                <a data-toggle="modal" data-target="#ShareModal">
+                                    <img src="assets/share_gray.svg " alt="Share Icon ">
+                                </a>
+                                <div *ngIf="parentRole " class="bookmark_outer ">
+                                    <a *ngIf="!program.isFav "
+                                        class="bookmark_icon cursor "><img src="assets/bookmark_gray.svg "
+                                            alt="Menu Image "></a>
+
+                                    <a *ngIf="program.isFav " 
+                                        class="bookmark_icon cursor "><img src="assets/bookmarkOrange.svg "
+                                            alt="Menu Image "></a>
+                                </div>
+
+                            </div>
+                            <h2 class="cursor" >{{program.name}}</h2>
+                            <div class="list_outer row row-0 ">
+                                <div class="list col-12 ">
+                                    <p><img src="assets/local.svg " alt="School image ">{{program.description}}
+                                    </p>
+                                </div>
+                                <div class="list col-md-4 ">
+                                    <p><img src="assets/user_group.svg "
+                                            alt="School image ">{{program?.ageGroup?.from + '-' + program?.ageGroup?.to}}
+                                        Yrs
+                                    </p>
+                                </div>
+                                <div class="list col-md-4 ">
+                                    <p><img src="assets/calendar.svg "
+                                            alt="School image ">{{program.date.from | date: 'MMM d, '}} –
+                                        {{program.date.to | date: 'MMM d, '}}</p>
+                                </div>
+                            </div>
+                            <div class="coding_text ">
+                              <div *ngIf="program.tags"> <h3 *ngFor="let tag of program.tags">{{tag.name}}</h3></div> 
+                                <div class="rating_box ">
+                                    <a href="javascript:; ">
+                                        <img src="assets/star.svg " alt="Star "> 5.0 (15)
+                                    </a>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+
+                </div>
+                <div *ngIf="!programs">
+                    <br>
+                    <br>
+                    <br>
+                   <h3 style="color: #494949; text-align: center;"> No Activity Found</h3>
+                </div>
+
+            </div> -->
+<!-- <div class="col-md-5">
+                <div class="map_section">
+                 
+                    <agm-map [latitude]="40.5682945" [longitude]="-74.0409239" [zoom]="11">
+                        <div *ngFor="let program of programs">
+                            <agm-marker *ngIf="program.lat && program.lng" [iconUrl]="markerUrl"
+                                [latitude]="program.lat" [longitude]="program.lng">
+                                <strong>{{program.name}}</strong>
+                            </agm-marker>
+                        </div>
+                    </agm-map>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section> -->
+
+
+
+<!--share Modal -->
+<div class="modal fade search_modal password" id="ShareModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true" class="icon-close"></span>
+            </button>
+            <div class="modal-body">
+                <h2>Share</h2>
+                <div class="share_option">
+                    <ul>
+                        <li>
+                            <a>Facebook</a>
+                        </li>
+                        <li>
+                            <a>Messenger</a>
+                        </li>
+                        <li>
+                            <a>Email</a>
+                        </li>
+                        <li>
+                            <a>Whatsapp</a>
+                        </li>
+                        <li>
+                            <a>Copylink</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ngx-ui-loader bgsType={{loaderType}} fgsType={{loaderType}} fgsSize="40" bgsSize="40" fgsPosition={{loaderPostion}}
+    overlayColor="rgba(40,40,40,0.12)">
+</ngx-ui-loader>
+<!-- <app-footer2 *ngIf="!isLogin"></app-footer2> -->

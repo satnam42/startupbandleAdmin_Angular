@@ -1,0 +1,109 @@
+<mat-card class="p-0">
+    <mat-card-title class="title">
+        <div class="card-title-text" *ngIf="!admin._id">Add Admin</div>
+        <div class="card-title-text" *ngIf="admin._id">Edit Admin</div>
+        <mat-divider></mat-divider>
+    </mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="adminForm" (ngSubmit)="onSubmit()">
+            <div fxLayout="row wrap">
+                <div fxFlex="100" fxFlex.gt-xs="50" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width">
+                            <input matInput name="name" placeholder="Name" formControlName="name"
+                                [(ngModel)]="admin.name">
+                        </mat-form-field>
+                    </div>
+                    <div class="pb-1">
+                        <mat-form-field class="full-width">
+                            <input matInput type="email" name="email" placeholder="Email" formControlName="email"
+                                [(ngModel)]="admin.email">
+                        </mat-form-field>
+                    </div>
+                    <div class="pb-1">
+                        <mat-form-field class="full-width">
+                            <mat-select name="sex" placeholder="Gender" formControlName="sex" [(ngModel)]="admin.sex">
+                                <mat-option *ngFor="let gender of genders" [value]="gender.value">
+                                    {{gender.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <!-- <div class="pb-1">
+                        <mat-form-field class="full-width">
+                            <input matInput name="address_line1" placeholder="Address Line1"
+                                [formControl]="adminForm.controls['addressLine1']" [(ngModel)]="admin.addressLine1">
+                        </mat-form-field>
+                    </div> -->
+
+                    <!-- <div class="pb-1">
+                        <mat-form-field class="full-width">
+                            <input matInput name="country" placeholder="Country"
+                                [formControl]="adminForm.controls['country']" [(ngModel)]="admin.country">
+                        </mat-form-field>
+                    </div> -->
+
+                    <!-- <div class="pb-1">
+                        <mat-form-field class="full-width">
+                            <input matInput name="zip_code" placeholder="Zip Code" maxlength="6"
+                                [formControl]="adminForm.controls['zipCode']" [(ngModel)]="admin.zipCode">
+                        </mat-form-field>
+                    </div> -->
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-xs="50" class="pr-1">
+
+                    <div class="pb-1">
+                        <mat-form-field class="full-width">
+                            <input matInput name="status" placeholder="status"
+                                [formControl]="adminForm.controls['status']" [(ngModel)]="admin.status">
+                        </mat-form-field>
+                    </div>
+                    <div class="pb-1" *ngIf="!admin._id">
+                        <mat-form-field class="full-width">
+                            <input matInput [type]="show ? 'password' : 'text'" name="password" placeholder="Password"
+                                [formControl]="adminForm.controls['password']" [(ngModel)]="admin.password">
+                            <mat-icon class="cursor-pointer" matSuffix (click)="show = !show">{{show ? 'visibility_off'
+                                : 'visibility'}}</mat-icon>
+                        </mat-form-field>
+                    </div>
+                    <!-- <div class="pb-1">
+                        <mat-form-field class="full-width">
+                            <input matInput name="phone" placeholder="Phone number" maxlength="10"
+                                [formControl]="adminForm.controls['phoneNumber']" [(ngModel)]="admin.phoneNumber">
+                        </mat-form-field>
+                    </div> -->
+
+
+                    <!-- <div class="pb-1">
+                        <mat-form-field class="full-width">
+                            <input matInput name="address_line2" placeholder="Address Line2"
+                                [formControl]="adminForm.controls['addressLine2']" [(ngModel)]="admin.addressLine2">
+                        </mat-form-field>
+                    </div> -->
+
+                    <!-- <div class="pb-1">
+                        <mat-form-field class="full-width">
+                            <input matInput name="city" placeholder="City" [formControl]="adminForm.controls['city']"
+                                [(ngModel)]="admin.city">
+                        </mat-form-field>
+                    </div> -->
+                    <!-- 
+                    <div class="pb-1" *ngIf="!admin._id">
+                        <mat-form-field class="full-width">
+                            <mat-select name="roleId" placeholder="User Role" formControlName="roleId" [(ngModel)]="user.roleId" >
+                                <mat-option *ngFor="let role of rolesList" [value]="role._id">
+                                    {{role.type}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div> -->
+
+                </div>
+            </div>
+            <button mat-raised-button color="warn" (click)="back()">Back</button>
+            <button class="submitBtn" mat-raised-button color="primary">Submit</button>
+        </form>
+    </mat-card-content>
+</mat-card>

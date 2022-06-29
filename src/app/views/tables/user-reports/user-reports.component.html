@@ -1,0 +1,39 @@
+<div [@animate]="{ value: '*', params: { y: '50px', delay: '600ms' } }">
+    <mat-card class="p-0 ">
+        <mat-tab-group>
+            <mat-tab label="Traffic Vs Sales">
+                <div echarts [options]="trafficVsSaleOptions" [merge]="trafficVsSale" [autoResize]="true" style="height: 255px;"></div>
+            </mat-tab>
+            <mat-tab label="Sessions">
+                <div echarts [options]="sessionOptions" [merge]="sessions" [autoResize]="true" style="height: 255px;"></div>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-card>
+</div>
+<h3>User Reports</h3>
+<div class="table">
+    <ngx-datatable [rows]="rows" class="material bg-white" [limit]="8" [scrollbarH]="false" [rowHeight]="50" [columnMode]="ColumnMode.force" [headerHeight]="50" [footerHeight]="50" [sorts]="[{ prop: 'name', dir: 'desc' }]">
+        <ngx-datatable-column name="No">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+                {{row.name}}
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Date">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+                {{row.date}}
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Time">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+                {{row.time}}
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Action">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+                <!-- <mat-icon matTooltip="delete" matTooltipPosition="above" color="warn">delete</mat-icon> -->
+                <mat-icon matTooltip="manage" matTooltipPosition="above">open_in_new</mat-icon>
+            </ng-template>
+        </ngx-datatable-column>
+    </ngx-datatable>
+</div>

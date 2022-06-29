@@ -1,0 +1,66 @@
+<!-- <mat-form-field class="margin-333" style="width: 100%">
+    <input matInput placeholder="Type to filter all columns" value="" (keyup)='updateFilter($event)'>
+</mat-form-field> -->
+
+<div>
+    <button class="rasisedBtn" mat-raised-button *ngIf='role.permissions.add==true || role.permissions.all==true' (click)="add()" color="primary">ADD</button>
+  
+    <!-- <ngx-datatable class="material bg-white" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="50" [limit]="10" [rows]="rows" [columns]="columns">
+    </ngx-datatable> -->
+    <mat-form-field style="width: 100%;">
+        <input matInput placeholder="Search" value="" (keyup)='updateFilter($event)' />
+    </mat-form-field>
+
+    <ngx-datatable [rows]="rows" class="material bg-white" *ngIf='role.permissions.view==true || role.permissions.all==true' [limit]="8" [scrollbarH]="false" [rowHeight]="50"
+        [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [sorts]="[{ prop: 'name', dir: 'desc' }]">
+        <ngx-datatable-column name="First Name">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+                <span class="text-capitalize"> {{row.firstName}}</span>
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Last Name">
+            <ng-template let-row="row" class="text-capitalize" ngx-datatable-cell-template>
+                <span class="text-capitalize"> {{row.lastName}}</span>
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Email">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+                {{row.email}}
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Phone No.">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+                {{row.phoneNumber}}
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Status">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+                <mat-chip class="status-{{row.status}}" (click)="changeStaus(row)" matTooltip="status"
+                    matTooltipPosition="above" mat-sm-chip selected>{{row.status}}</mat-chip>
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Action"  *ngIf='role.permissions.delete==true || role.permissions.edit==true || role.permissions.all==true'>
+            <ng-template let-row="row" ngx-datatable-cell-template>
+                <button mat-icon-button [matMenuTriggerFor]="msgMenu" class="actionBtn">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #msgMenu="matMenu">
+                    <!-- <button mat-menu-item (click)="edit(row)">
+                      <mat-icon>edit</mat-icon>Edit
+                  </button> -->
+                    <button mat-menu-item *ngIf='role.permissions.delete==true  || role.permissions.all==true' (click)="deleteUser(row)">
+                        <mat-icon>delete</mat-icon>Delete
+                    </button>
+                    <button mat-menu-item *ngIf='role.permissions.edit==true  || role.permissions.all==true' (click)="userProfile(row)">
+                        <mat-icon>open_in_new</mat-icon>Manage
+                    </button>
+
+                </mat-menu>
+
+            </ng-template>
+        </ngx-datatable-column>
+    </ngx-datatable>
+</div>

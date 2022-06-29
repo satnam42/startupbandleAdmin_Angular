@@ -1,0 +1,66 @@
+
+
+
+/* start navigation css */
+
+.navigation {
+  display: inline-block;
+  width: 100%;
+  background: #FFFFFF;
+  box-shadow: inset 0px -1px 0px #E5E9EC;
+  max-height: 57px;
+}
+.navigation li{
+  display: inline-block;  
+  margin-right: 47px;
+}
+.navigation li:last-child{
+  margin:0;
+}
+.navigation li a{
+  padding: 17px 10px 20px;
+  font-size: 13px;
+  display: inline-block;
+  color: #748494;
+  position: relative;
+  transition: 0.8s;
+  overflow: hidden;
+}
+.navigation li a::after{
+  content: '';
+  transition: 0.8s;
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  bottom: 0;
+  left: -100%;
+  background: linear-gradient(to right, #777CEA, #777CEA);
+}
+.navigation li a.active,
+.navigation li a:hover
+{
+  background: linear-gradient(to right, #777CEA, #777CEA);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;;
+}
+.navigation li a.active::after,
+.navigation li a:hover::after
+{
+left: 0;
+}
+@media (max-width:991px){
+  .navigation li{
+    margin-right: 23px;
+  }
+}
+
+@media (max-width:767px){
+  .navigation li{  
+    margin-right: 18px;
+  }
+  .navigation li a{
+    padding: 17px 10px 20px;
+    font-size: 12px;
+  }
+
+}

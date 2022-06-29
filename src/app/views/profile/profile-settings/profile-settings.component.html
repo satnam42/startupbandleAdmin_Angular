@@ -1,0 +1,142 @@
+<mat-card class="p-0">
+    <mat-tab-group>
+
+        <!-- ---------------------------------Account Settings-------------------------- -->
+
+        <mat-tab label="Account Settings">
+
+            <mat-card-content class="mt-1">
+                <form (ngSubmit)="updateUser(user)">
+                    <mat-form-field class="full-width">
+                        <input matInput name="firstName" [(ngModel)]="user.firstName" placeholder="First Name">
+                    </mat-form-field>
+                    <mat-form-field class="full-width">
+                        <input matInput name="lastName" [(ngModel)]="user.lastName" placeholder="Last Name">
+                    </mat-form-field>
+                    <mat-form-field class="full-width">
+                        <input matInput name="email" [(ngModel)]="user.email" placeholder="Email">
+                    </mat-form-field>
+                    <mat-form-field class="full-width">
+                        <mat-select name="sex" placeholder="Gender" [(ngModel)]="user.sex">
+                            <mat-option *ngFor="let gender of genders" [value]="gender.value">
+                                {{gender.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+
+                    <mat-form-field class="full-width">
+                        <input matInput name="phone" placeholder="Phone number" maxlength="10"
+                            [(ngModel)]="user.phoneNumber">
+                    </mat-form-field>
+                    <mat-form-field class="full-width">
+                        <mat-select name="status" placeholder="Status" [(ngModel)]="user.status">
+                            <mat-option *ngFor="let s of status" [value]="s.value">
+                                {{s.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <button mat-raised-button color="primary">Save</button>
+                </form>
+            </mat-card-content>
+        </mat-tab>
+
+        <!-- ---------------------------------Profile Picture-------------------------- -->
+
+        <mat-tab label="Profile Picture">
+            <mat-card-content>
+                <div class="mb-1 mt-1">
+                    <p>Upload a profile picture</p>
+                    <!-- <input type="file" ng2FileSelect [uploader]="uploader" /> -->
+                    <input #file accept="image/*" (change)="singleSelect($event)" type="file" name="myfile" />
+                </div>
+                <span style="color:red;" *ngIf="msg">{{msg}}</span>
+                <!-- <input #file type="file" accept='image/*' (change)="preview(file.files)" />    another way -->
+                <img [src]="imgURL" height="300" *ngIf="imgURL"><br>
+
+                
+                <button mat-raised-button class="mat-primary" [disabled]="!imgURL"
+                    (click)="uploadProfile(data)">Upload</button>
+                <button class="mt-1" style="align-items:flex-end;margin-left: 15px" mat-raised-button (click)="back()"
+                    color="warn">Back</button>
+            </mat-card-content>
+        </mat-tab>
+
+        <!-- ---------------------------------reset password-------------------------- -->
+
+        <mat-tab label="Reset Password">
+            <mat-card-content class="mt-1">
+                <form>
+                    <mat-form-field class="full-width">
+                        <input matInput [type]="show ? 'password' : 'text'" name="Old Password"
+                            [(ngModel)]="userPass.oldPassword" placeholder="Old Password">
+                        <mat-icon class="cursor-pointer" matSuffix (click)="show = !show">{{show ? 'visibility_off' :
+                            'visibility'}}</mat-icon>
+                    </mat-form-field>
+                    <mat-form-field class="full-width">
+                        <input matInput [type]="hide ? 'password' : 'text'" name="New Password"
+                            [(ngModel)]="userPass.newPassword" placeholder="New Password">
+                        <mat-icon class="cursor-pointer" matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' :
+                            'visibility'}}</mat-icon>
+                    </mat-form-field>
+                    <button mat-raised-button color="primary" (click)="resetPassword(userPass)">Update</button>
+                    <!-- <button style="align-items:flex-end;margin-left: 15px;" mat-raised-button (click)="back()" color="warn">Back</button> -->
+                </form>
+            </mat-card-content>
+        </mat-tab>
+
+        <!-- ---------------------------------gallery-------------------------- -->
+
+      
+        <mat-tab label="Gallery" #view>
+            <mat-card-content>
+                <div class="mb-1 mt-1">
+                    <p>Upload Images </p>
+                    <!-- <input type="file" ng2FileSelect [uploader]="uploader" /> -->
+                    <input #file accept="image/*" (change)="multiImgSelect($event)" type="file" name="myfile"
+                        multiple="multiple" />
+                </div>
+                <span style="color:red;" *ngIf="msg">{{msg}}</span>
+                <!-- <input #file type="file" accept='image/*' (change)="preview(file.files)" />    another way -->
+
+                <div class="row">
+                    <div class="column" *ngFor="let image of imgURLS">
+                        <img class="multiimages" [src]="image"> <br>
+
+                    </div>
+                </div>
+
+                <button mat-raised-button class="mat-primary" [disabled]="!imgURLS"
+                    (click)="uploadMultipleImages()">Upload</button>
+                <button class="mt-1" style="align-items:flex-end;margin-left: 15px" mat-raised-button (click)="back()"
+                    color="warn">Back</button>
+
+            </mat-card-content>
+            <mat-card-content>
+                <div class="row " >
+                    <div class="column view" *ngFor="let image of user.gallery">
+                     <img (click)="open(mymodal,image.image)" class="multiimage " src="{{image.image}}" loading="lazy"> 
+                     <i class="material-icons imgDel"  (click)="deleteImage(user.id,image._id,image.image)">delete</i><br> <br>
+                    </div>
+                    
+                </div>
+
+            </mat-card-content>
+
+        </mat-tab>
+
+    </mat-tab-group>
+</mat-card>
+
+                                         <!-- modal -->
+
+<ng-template  #mymodal  let-modal>
+   <div>
+    <div class="modal-body" >
+        <img class="selectedImg" src="{{selectedImg}}" >
+    </div>
+</div>
+    <div class="modal-footer"   >
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+      </div>
+  </ng-template>

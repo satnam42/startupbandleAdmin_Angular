@@ -1,0 +1,42 @@
+.cursor-pointer {
+    cursor: pointer;
+}
+.multiimages{
+    width: 100px;
+    height: 100px;
+    display: table;
+    padding: 5px;
+   }
+
+  .multiimage{
+    width: 180px;
+    height: 150px;
+    display: table;
+    padding: 8px;
+
+  } 
+
+.selectedImg{
+  width: 100%;
+}
+
+.imgDel{
+  cursor: pointer;
+}
+.modal-body{
+  height: 100%;
+  width: 100%;
+}
+
+.view{
+  margin: 20px;
+  border: 1px solid grey;
+  padding: 16px;
+}
+
+/* .view:hover{
+  -ms-transform: scale(1.5); 
+  -webkit-transform: scale(1.5);
+  transform: scale(1.5); 
+  cursor: pointer;
+} */

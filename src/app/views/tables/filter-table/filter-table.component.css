@@ -1,0 +1,31 @@
+.actionBtn {
+    cursor: pointer;
+    border: none !important;
+    background: none !important;
+}
+
+.actionBtn:hover {
+    border: none !important;
+}
+
+.rasisedBtn {
+    float: right;
+    color: white;
+    line-height: 30px;
+    background-color: #10174c;
+    padding: 0 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.status-active {
+    cursor: pointer;
+    background-color: green !important;
+    text-transform: capitalize;
+}
+
+.status-deactive {
+    cursor: pointer;
+    background-color: red !important;
+    text-transform: capitalize;
+}
